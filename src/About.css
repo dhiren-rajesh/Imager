@@ -3,13 +3,23 @@
   justify-content: space-evenly;
 }
 
-.content {
-  margin: 3rem 3rem 3rem 7rem;
+.feature-title {
+  margin: 3rem 3rem 0.5rem 7rem;
   background-color: #9900ee;
   background-image: linear-gradient(315deg, #0cb2f3 0%, #d775e0 74%);
   -webkit-background-clip: text;
   -webkit-text-fill-color: transparent;
 }
+
+.content {
+  margin: 0 3rem 3rem 7rem;
+  background-color: #9900ee;
+  background-image: linear-gradient(315deg, #0cb2f3 0%, #d775e0 74%);
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  font-weight: 600;
+}
+
 .icon {
   padding: 1rem;
   margin: 3rem 5rem 0 5rem;
@@ -20,3 +30,18 @@
   height: 60px;
   width: 60px;
 }
+
+/* @media screen and (max-width: 768px) {
+  .content,
+  .feature-title {
+    width: 0;
+    height: 0;
+  }
+}
+@media screen and (min-width: 768px) {
+  .content,
+  .feature-title {
+    width: 0;
+    height: 0;
+  }
+} */

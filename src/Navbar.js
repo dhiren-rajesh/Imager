@@ -15,13 +15,16 @@ export default function Navbar() {
         <Upload/>
         <div className="row" id="about">
             <div className="feature-box">
-                <h3 className="content">Easy to use</h3>
+                <h3 className="feature-title">Easy to use</h3>
+                <p   className="content">Just have to Upload and Analyze</p>
             </div>
             <div className="feature-box">
-                <h3 className="content">Quick and Responsive</h3>
+                <h3 className="feature-title">Quick and Responsive</h3>
+                <p className="content">Results Displayed within Seconds</p>
             </div>
             <div className="feature-box">
-                <h3 className="content">Guaranteed to Work</h3>
+                <h3 className="feature-title">Guaranteed to Work</h3>
+                <p className="content">High Accuracy in getting Necessary Results</p>
             </div> 
         </div>
         </div>
