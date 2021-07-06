@@ -17,3 +17,13 @@ navbar {
   -webkit-background-clip: text;
   -webkit-text-fill-color: transparent;
 }
+
+@media screen and (max-width: 768px) {
+  navbar {
+    display: flex;
+    justify-content: space-between;
+  }
+  .about {
+    margin-left: 7rem;
+  }
+}
