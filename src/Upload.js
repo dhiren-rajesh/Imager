@@ -1,8 +1,6 @@
 import React, { useState, useRef } from "react";
 import { FileDrop } from "react-file-drop";
-import { drawRect } from "./Utilities";
-import * as tf from "@tensorflow/tfjs";
-//import * as cocossd from "@tensorflow-models/coco-ssd";
+// import { drawRect } from "./Utilities";
 import "./Upload.css";
 
 function Upload(props) {
@@ -12,26 +10,21 @@ function Upload(props) {
     alt: "Upload an Image",
   });
   const canvasRef = useRef(null);
-  //Main function
-  //   const runCoco = async () => {
-  //   const net = await cocossd.load();
-  //   console.log("Handpose model loaded.");
-  //   detect(net);
+
+  // const detect = async (net) => {
+  //   const img = document.getElementById("testimage");
+  //   const width = 600;
+  //   const height = 300;
+  //   canvasRef.current.width = width;
+  //   canvasRef.current.height = height;
+  //   const ctx = canvasRef.current.getContext("2d");
+  //   ctx.drawImage(img, 0, 0, width, height);
+  //   const obj = await net.detect(img);
+  //   //value of ctx and bounding box
+  //   console.log("ctx => ", ctx);
+  //   console.log("obj => ", obj);
+  //   drawRect(obj, ctx);
   // };
-  const detect = async (net) => {
-    const img = document.getElementById("testimage");
-    const width = 600;
-    const height = 300;
-    canvasRef.current.width = width;
-    canvasRef.current.height = height;
-    const ctx = canvasRef.current.getContext("2d");
-    ctx.drawImage(img, 0, 0, width, height);
-    const obj = await net.detect(img);
-    //value of ctx and bounding box
-    console.log("ctx => ", ctx);
-    console.log("obj => ", obj);
-    drawRect(obj, ctx);
-  };
 
   const onFileChange = (e) => {
     console.log(e.target.files[0]);
@@ -99,7 +92,6 @@ function Upload(props) {
           id="analyze-btn"
           onClick={() => {
             console.log("start");
-            //runCoco();
           }}
         />
         <label className="btn-fnc" htmlFor="analyze-btn">
@@ -121,10 +113,7 @@ function Upload(props) {
       >
         {fileData()}
       </FileDrop>
-      <canvas
-        className = "finalCanvas"
-        ref={canvasRef}
-      />
+      <canvas className="finalCanvas" ref={canvasRef} />
     </div>
   );
 }
