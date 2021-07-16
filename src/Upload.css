@@ -26,6 +26,16 @@ img {
   width: 600px;
   height: 300px;
 }
+.finalCanvas {
+  position: absolute;
+  margin: 10rem auto 3rem auto;
+  text-align: center;
+  left: 0;
+  right: 0;
+  z-index: 8;
+  width: 600px;
+  height: 300px;
+}
 
 .btn-fnc {
   color: white !important;
@@ -46,7 +56,7 @@ img {
   -webkit-background-clip: text;
   -webkit-text-fill-color: transparent;
 }
-@media screen and (max-width: 768px) {
+@media screen and (max-width: 765px) {
   .box-preview {
     width: 17rem;
     height: 20rem;
@@ -55,10 +65,20 @@ img {
     width: 17rem;
     height: 20rem;
   }
+  .finalCanvas {
+    margin-top: 20rem;
+    width: 17rem;
+    height: 20rem;
+  }
+  .choose {
+    width: 12rem;
+    padding: 2.5rem;
+  }
 }
 @media screen and (min-width: 768px) {
   .box-preview,
-  img {
+  img,
+  .finalCanvas {
     width: 37.5rem;
     height: 18.75rem;
   }
