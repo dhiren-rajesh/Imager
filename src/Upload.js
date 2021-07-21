@@ -1,23 +1,25 @@
 import React, { useState, useRef } from "react";
 import { FileDrop } from "react-file-drop";
 import { drawRect } from "./Utilities";
-//import * as tf from "@tensorflow/tfjs";
-//import * as cocossd from "@tensorflow-models/coco-ssd";
+import * as tf from "@tensorflow/tfjs";
+import * as cocossd from "@tensorflow-models/coco-ssd";
 import "./Upload.css";
 
 function Upload(props) {
   const [selectedFile, setSelectedFile] = useState(null);
+  const [analyzedFile, setAnalyzedFile] = useState(null);
   const [{ src, alt }, setFile] = useState({
     src: null,
     alt: "Upload an Image",
   });
   const canvasRef = useRef(null);
-  //Main function
-  //   const runCoco = async () => {
-  //   const net = await cocossd.load();
-  //   console.log("Handpose model loaded.");
-  //   detect(net);
-  // };
+
+  const runCoco = async () => {
+  const net = await cocossd.load();
+  console.log("Handpose model loaded.");
+  detect(net);
+  };
+
   const detect = async (net) => {
     const img = document.getElementById("testimage");
     const width = 600;
@@ -51,18 +53,19 @@ function Upload(props) {
   };
 
   // Details of the uploaded file
-  // console.log(selectedFile);
+
   const fileData = () => {
     if (selectedFile != null) {
-      return (
-        <div>
-          <div className="box-preview">
-            <img id="testimage" src={src} alt={alt}></img>
-          </div>
-          <h4 className="uploadTxt">File Uploaded.</h4>
-        </div>
-      );
-    } else {
+          return (
+            <div>
+              <div className="box-preview">
+                <img id="testimage" src={src} alt={alt}></img>
+              </div>
+              <h4 className="uploadTxt">File Uploaded.</h4>
+            </div>
+          );
+        }
+     else {
       return (
         <div>
           <div className="box-preview">
@@ -72,6 +75,18 @@ function Upload(props) {
       );
     }
   };
+
+  const analyzedData = () => {
+    if(analyzedFile === "Analyzed"){
+      return(
+      <canvas
+        className = "finalCanvas"
+        ref={canvasRef}
+      />
+      );
+    }
+  }
+
 
   return (
     <div className="upload-component">
@@ -91,19 +106,22 @@ function Upload(props) {
           type="button"
           style={{ display: "none" }}
           id="upload-btn"
-          onClick={onFileUpload}
+          onClick = {onFileUpload}
         />
         <label className="btn-fnc" htmlFor="analyze-btn">
           Analyze
         </label>
         <input
           type="button"
-          style={{ display: "none" }}
+          style={{ display: "none"}}
           id="analyze-btn"
           onClick={() => {
+            // document.getElementById("analyze-btn").style.display = "none";
+            // console.log("clicked.");
             if(selectedFile != null){
             console.log("start");
-            //runCoco();
+            runCoco();
+            setAnalyzedFile("Analyzed"); 
             }
             else{
               alert("Please Choose a File First")
@@ -126,10 +144,7 @@ function Upload(props) {
       >
         {fileData()}
       </FileDrop>
-      <canvas
-        className = "finalCanvas"
-        ref={canvasRef}
-      />
+      {analyzedData()}
     </div>
   );
 }
