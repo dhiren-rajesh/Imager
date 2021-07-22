@@ -8,6 +8,7 @@ import "./Upload.css";
 function Upload(props) {
   const [selectedFile, setSelectedFile] = useState(null);
   const [analyzedFile, setAnalyzedFile] = useState(null);
+  const [showBtn, setShowBtn] = useState(true);
   const [{ src, alt }, setFile] = useState({
     src: null,
     alt: "Upload an Image",
@@ -52,8 +53,6 @@ function Upload(props) {
     }
   };
 
-  // Details of the uploaded file
-
   const fileData = () => {
     if (selectedFile != null) {
           return (
@@ -79,19 +78,36 @@ function Upload(props) {
   const analyzedData = () => {
     if(analyzedFile === "Analyzed"){
       return(
+      <div>
+      <div>
       <canvas
         className = "finalCanvas"
         ref={canvasRef}
       />
+      </div>
+      <div className="uploading-final">
+        <label className="btn-fnc" htmlFor="reupload-btn">
+          Upload Another File
+        </label>
+        <input
+          type="button"
+          style={{ display: "none"}}
+          id="reupload-btn"
+          onClick={() => {
+            window.location.reload();
+            }
+          }
+          />
+          </div>
+          </div>
       );
     }
   }
 
-
-  return (
-    <div className="upload-component">
-      <h1 className="uploadTxt">Please Upload a File</h1>
-      <div className="uploading">
+  const hideBtn = () =>{
+    if(showBtn){
+      return(
+        <div className="uploading">
         <input
           type="file"
           accept="image/jpeg"
@@ -116,12 +132,11 @@ function Upload(props) {
           style={{ display: "none"}}
           id="analyze-btn"
           onClick={() => {
-            // document.getElementById("analyze-btn").style.display = "none";
-            // console.log("clicked.");
             if(selectedFile != null){
             console.log("start");
             runCoco();
             setAnalyzedFile("Analyzed"); 
+            setShowBtn(false);
             }
             else{
               alert("Please Choose a File First")
@@ -129,6 +144,14 @@ function Upload(props) {
           }}
         />
       </div>
+      );
+    }
+  }
+
+  return (
+    <div className="upload-component">
+      <h1 className="uploadTxt">Please Upload a File</h1>
+      {hideBtn()}
       <FileDrop
         onDrop={(file, e) => {
           console.log(file[0]);
