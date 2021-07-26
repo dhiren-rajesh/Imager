@@ -5,7 +5,7 @@ import * as tf from "@tensorflow/tfjs";
 import * as cocossd from "@tensorflow-models/coco-ssd";
 import "./Upload.css";
 
-function Upload(props) {
+function Upload() {
   const [selectedFile, setSelectedFile] = useState(null);
   const [analyzedFile, setAnalyzedFile] = useState(null);
   const [showBtn, setShowBtn] = useState(true);
