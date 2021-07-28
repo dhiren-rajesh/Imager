@@ -87,7 +87,9 @@ function Upload() {
       </div>
       <div className="uploading-final">
         <label className="btn-fnc" htmlFor="reupload-btn">
-          Upload Another File
+          <a style={{color:'white' , textDecoration:'none'}} href="choose">
+            Upload Another File
+          </a>
         </label>
         <input
           type="button"
@@ -115,7 +117,7 @@ function Upload() {
           id="actual-btn"
           onChange={onFileChange}
         />
-        <label className="btn-fnc" htmlFor="actual-btn">
+        <label id="choose" className="btn-fnc" htmlFor="actual-btn">
           Choose File
         </label>
         <input
