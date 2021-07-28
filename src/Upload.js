@@ -127,7 +127,9 @@ function Upload() {
           onClick = {onFileUpload}
         />
         <label className="btn-fnc" htmlFor="analyze-btn">
-          Analyze
+          <a style={{color:'white' , textDecoration:'none'}}>
+            Analyze
+          </a>
         </label>
         <input
           type="button"
@@ -169,7 +171,9 @@ function Upload() {
       >
         {fileData()}
       </FileDrop>
-      {analyzedData()}
+      <div>
+        {analyzedData()}
+      </div>
     </div>
   );
 }
