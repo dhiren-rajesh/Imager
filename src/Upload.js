@@ -87,10 +87,9 @@ function Upload() {
       </div>
       <div className="uploading-final">
         <label className="btn-fnc" htmlFor="reupload-btn">
-          <a style={{color:'white' , textDecoration:'none'}} href="chooseFile">
             Upload Another File
-          </a>
         </label>
+        <a style={{color:'white' , textDecoration:'none'}} href="chooseFile">
         <input
           type="button"
           style={{ display: "none"}}
@@ -100,6 +99,7 @@ function Upload() {
             }
           }
           />
+          </a>
           </div>
           </div>
       );
