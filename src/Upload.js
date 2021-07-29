@@ -127,9 +127,7 @@ function Upload() {
           onClick = {onFileUpload}
         />
         <label className="btn-fnc" htmlFor="analyze-btn">
-          <a style={{color:'white' , textDecoration:'none'}}>
             Analyze
-          </a>
         </label>
         <input
           type="button"
@@ -155,7 +153,9 @@ function Upload() {
   return (
     <div className="upload-component">
       <h1 className="uploadTxt">Please Upload a File</h1>
-      {hideBtn()}
+      <a href="#analyzedFile" style={{color:'white' , textDecoration:'none'}}>
+        {hideBtn()}
+      </a>
       <FileDrop
         onDrop={(file, e) => {
           console.log(file[0]);
@@ -171,7 +171,7 @@ function Upload() {
       >
         {fileData()}
       </FileDrop>
-      <div>
+      <div id="analyzedFile">
         {analyzedData()}
       </div>
     </div>
