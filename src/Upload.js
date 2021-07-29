@@ -79,7 +79,7 @@ function Upload() {
     if(analyzedFile === "Analyzed"){
       return(
       <div>
-      <div>
+      <div id="analyzedFile">
       <canvas
         className = "finalCanvas"
         ref={canvasRef}
@@ -87,7 +87,7 @@ function Upload() {
       </div>
       <div className="uploading-final">
         <label className="btn-fnc" htmlFor="reupload-btn">
-          <a style={{color:'white' , textDecoration:'none'}} href="choose">
+          <a style={{color:'white' , textDecoration:'none'}} href="chooseFile">
             Upload Another File
           </a>
         </label>
@@ -117,7 +117,7 @@ function Upload() {
           id="actual-btn"
           onChange={onFileChange}
         />
-        <label id="choose" className="btn-fnc" htmlFor="actual-btn">
+        <label id="chooseFile" className="btn-fnc" htmlFor="actual-btn">
           Choose File
         </label>
         <input
@@ -171,9 +171,7 @@ function Upload() {
       >
         {fileData()}
       </FileDrop>
-      <div id="analyzedFile">
         {analyzedData()}
-      </div>
     </div>
   );
 }
